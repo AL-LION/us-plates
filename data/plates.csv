@@ -1,3 +1,14 @@
 state,image,description,source,featured
-Indiana,images/indiana-plate-1.png,Indiana main license plate,https://www.in.gov/bmv/registration-plates/license-plates-overview/personalized-license-plates,yes
-Indiana,images/indiana-plate-2.png,Indiana main license plate,https://www.in.gov/bmv/registration-plates/license-plates-overview/personalized-license-plates,
+Indiana,images/indiana-plate-1.png,Indiana main plate,https://www.in.gov/bmv/registration-plates/license-plates-overview/personalized-license-plates,yes
+Maryland,images/maryland-plate-main.png,Maryland main license plate,http://www.worldlicenseplates.com/usa/US_MDXX.html,yes
+Maryland,images/maryland-plate-30th.png,Maryland 30th anniversary plate,,
+Maryland,images/maryland-plate-bay.png,Maryland Chesapeake Bay plate,,
+Maryland,images/maryland-plate-farm.png,Maryland farm plate,,
+Virginia,images/virginia-plate-main.png,Virginia main plate,,yes
+District of Columbia,images/dc-plate-main.png,DC main plate,,yes
+Florida,images/florida-plate-main.png,Florida main plate,,yes
+Texas,images/texas-plate-main.png,Texas main plate,,yes
+California,images/california-plate-main.png,California main plate,,yes
+Delaware,images/delaware-plate-main.png,Delaware main plate,,yes
+New York,images/ny-plate-main.png,New York main plate,,yes
+New Jersey,images/nj-plate-main.png,New Jersey main plate,,yes

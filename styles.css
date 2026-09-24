@@ -5,7 +5,7 @@
 body {
   margin: 0;
   padding: 12px 20px;
-  color: #0b141b;
+  color: #0b0f11;
   font-family: system-ui, sans-serif;
 }
 
@@ -18,7 +18,7 @@ main {
 }
 
 h1 {
-  margin: 0.25rem 0;
+  margin: 0.2rem\ 0;
 }
 
 main > p {
@@ -41,11 +41,15 @@ main > p {
 }
 
 #map path:hover {
-  filter: brightness(1.08);
+  filter: brightness(1.06);
+}
+
+#map path[fill="#006d2c"]:hover {
+  filter: brightness(1.35);
 }
 
 #map path:focus-visible {
-  filter: brightness(1.08);
+  filter: brightness(1.06);
 }
 
 #map path:focus {
@@ -131,14 +135,14 @@ main > p {
 
 .legend-blocks {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   height: 28px;
   margin-top: 0.4rem;
 }
 
 .legend-title {
   display: block;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
   text-align: left;
 }
@@ -146,6 +150,7 @@ main > p {
 .legend-labels {
   display: flex;
   justify-content: space-between;
+  font-size: 0.9rem;
   margin: 0.2rem -0.2rem 0;
 }
 
@@ -163,4 +168,43 @@ main > p {
   #map svg {
     height: auto;
   }
+}
+
+.dc-marker {
+  cursor: pointer;
+}
+
+.dc-marker-hit-area {
+  fill: transparent;
+}
+
+.dc-marker-dot {
+  stroke: white;
+  stroke-width: 2;
+  pointer-events: none;
+}
+
+.dc-marker:hover .dc-marker-dot,
+.dc-marker:focus-visible .dc-marker-dot {
+    filter: brightness(1.2);
+}
+
+main:not(.gallery-page) {
+  max-width: none;
+}
+
+#map {
+  width: min(100%, 1100px);
+  margin-inline: auto;
+}
+
+main > h1 {
+  margin: 0 0 0.25rem;
+}
+
+main > p:first-of-type {
+  max-width: 28rem;
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.3;
 }

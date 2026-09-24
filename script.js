@@ -97,23 +97,23 @@ async function drawMap() {
 
         const title = document.createElement("span");
         title.className = "legend-title";
-        title.textContent = "Sightings";
+        title.textContent = "Seen";
 
         const blocks = document.createElement("div");
         blocks.className = "legend-blocks";
 
         const ranges = [
-          ["0", "#e8e8e8"],
-          ["1–3", "#bae4b3"],
-          ["4–6", "#74c476"],
+          ["0", "#E0E0E0"],
+          ["1", "#E9F7E1"],
+          ["2", "#c7e9c0"],
+          ["3–6", "#74c476"],
           ["7–9", "#31a354"],
           ["10+", "#006d2c"]
-        ];
-
+        ];    
     for (const [label, fill] of ranges) {
       const block = document.createElement("span");
       block.style.backgroundColor = fill;
-      block.setAttribute("aria-label", `${label} sightings`);
+      block.setAttribute("aria-label", `${label}  `);
       blocks.append(block);
     }
 
@@ -125,8 +125,14 @@ async function drawMap() {
     legend.hidden = false;
 
     const color = d3.scaleThreshold()
-      .domain([4, 7, 10])
-      .range(["#bae4b3", "#74c476", "#31a354", "#006d2c"]);
+      .domain([2, 3, 4, 7, 10])
+      .range([
+        "#E9F7E1",
+        "#c7e9c0",
+        "#74c476",
+        "#31a354",
+        "#006d2c"
+      ]);
 
     const svg = d3.select("#map")
       .append("svg")
@@ -144,7 +150,7 @@ async function drawMap() {
       preview.replaceChildren();
 
       const label = document.createElement("strong");
-      label.textContent = `${name}: ${count} sighting${count === 1 ? "" : "s"}`;
+      label.textContent = `${name === "District of Columbia" ? "DC" : name}: ${count} seen`;
       preview.append(label);
 
       const date = firstSeen.get(name);
@@ -190,9 +196,10 @@ async function drawMap() {
       .join("path")
       .attr("d", path)
       .attr("fill", state => {
+        if (state.properties.name === "Maryland") return "#EDA932";
         const count = counts.get(state.properties.name) ?? 0;
-        return count === 0 ? "#dedede" : color(count);
-      })
+        return count === 0 ? "#E0E0E0" : color(count);
+      })  
       .attr("stroke", "#ffffff")
       .attr("stroke-width", 1.5)
       .attr("tabindex", 0)
@@ -200,7 +207,7 @@ async function drawMap() {
       .attr("aria-label", state => {
         const name = state.properties.name;
         const count = counts.get(name) ?? 0;
-        return `${name}, ${count} sighting${count === 1 ? "" : "s"}. Open plate gallery.`;
+        return `${name}, ${count} seen${count === 1 ? "" : "s"}. Open plate gallery.`;
       })
       .on("focus", function (event, state) {
         const bounds = this.getBoundingClientRect();
@@ -231,6 +238,67 @@ async function drawMap() {
         window.location.href =
           `state.html?state=${encodeURIComponent(state.properties.name)}`;
   });
+
+  const dc = states.find(
+  state => state.properties.name === "District of Columbia"
+);
+
+const dcPosition = projection([-77.0369, 38.9072]);
+
+if (dc && dcPosition) {
+  const [x, y] = dcPosition;
+  const count = counts.get("District of Columbia") ?? 0;
+
+  const dcMarker = svg.append("g")
+    .attr("class", "dc-marker")
+    .attr("role", "link")
+    .attr("tabindex", 0)
+    .attr(
+      "aria-label",
+      `District of Columbia, ${count} seen. Open plate gallery.`
+    );
+
+  dcMarker.append("circle")
+    .attr("class", "dc-marker-hit-area")
+    .attr("cx", x)
+    .attr("cy", y)
+    .attr("r", 9);
+
+  dcMarker.append("circle")
+    .attr("class", "dc-marker-dot")
+    .attr("cx", x)
+    .attr("cy", y)
+    .attr("r", 6)
+    .attr("fill", count === 0 ? "#E0E0E0" : color(count));
+
+  dcMarker
+    .on("mouseenter", event => showPreview(event, dc))
+    .on("mousemove", movePreview)
+    .on("mouseleave", () => {
+      preview.hidden = true;
+    })
+    .on("focus", () => {
+      const bounds = dcMarker.node().getBoundingClientRect();
+      showPreview(
+        {
+          clientX: bounds.left + bounds.width / 2,
+          clientY: bounds.top + bounds.height / 2
+        },
+        dc
+      );
+    })
+    .on("blur", () => {
+      preview.hidden = true;
+    })
+    .on("click", () => {
+      window.location.href = "state.html?state=District%20of%20Columbia";
+    })
+    .on("keydown", event => {
+      if (event.key === "Enter") {
+        window.location.href = "state.html?state=District%20of%20Columbia";
+      }
+    });
+}
 
     status.hidden = true;
   } catch (error) {

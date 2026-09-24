@@ -1,13 +1,13 @@
 state,count,first_seen
-Maryland,1,2026-09-06
-Virginia,5,2026-09-06
-District of Columbia,4,2026-09-06
+Maryland,10,2026-09-06
+Virginia,6,2026-09-06
+District of Columbia,6,2026-09-06
 Minnesota,1,2026-09-06
-Texas,1,2026-09-07
+Texas,3,2026-09-07
 Indiana,1,2026-09-10
-Delaware,1,2026-09-11
+Delaware,4,2026-09-11
 Florida,3,2026-09-11
-New Jersey,1,2026-09-11
+New Jersey,3,2026-09-11
 North Carolina,1,2026-09-11
 Massachusetts,1,2026-09-11
 Wisconsin,1,2026-09-11
@@ -15,10 +15,10 @@ Pennsylvania,1,2026-09-11
 Rhode Island,1,2026-09-11
 South Dakota,1,2026-09-12
 Georgia,1,2026-09-12
-New York,1,2026-09-12
+New York,2,2026-09-12
 North Dakota,1,2026-09-13
 Missouri,1,2026-09-16
-California,1,2026-09-20
+California,2,2026-09-20
 Illinois,1,2026-09-20
 West Virginia,1,2026-09-20
 Nebraska,1,2026-09-20
