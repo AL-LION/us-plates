@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>US Plates</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <h1>License Plates In the US</h1>
+    <p>License plates spotted by us across the United States. Hover over or focus on a state to see its sighting count. Select a state to view its plates.</p>
+
+    <div id="map" aria-label="Map of license plate sightings by state"></div>
+    <div id="plate-preview" hidden></div>
+    <div id="map-legend" aria-label="Map color legend" hidden></div>
+    <p id="status" role="status">Loading map…</p>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

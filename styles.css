@@ -1,0 +1,166 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 12px 20px;
+  color: #0b141b;
+  font-family: system-ui, sans-serif;
+}
+
+main {
+  max-width: 1100px;
+  height: calc(100dvh - 24px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  margin: 0.25rem 0;
+}
+
+main > p {
+  margin: 0.25rem 0;
+}
+
+#map {
+  flex: 1;
+  min-height: 0;
+}
+
+#map svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#map path {
+  cursor: pointer;
+}
+
+#map path:hover {
+  filter: brightness(1.08);
+}
+
+#map path:focus-visible {
+  filter: brightness(1.08);
+}
+
+#map path:focus {
+  outline: none;
+}
+
+.gallery-page {
+  height: auto;
+  padding-top: 1rem;
+  padding-bottom: 3rem;
+}
+
+#gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+#gallery figure {
+  margin: 0;
+}
+
+#gallery a,
+#gallery img {
+  display: block;
+}
+
+#gallery img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+}
+
+@media (max-width: 700px) {
+  #gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 450px) {
+  #gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+#plate-preview {
+  position: fixed;
+  z-index: 10;
+  width: 220px;
+  padding: 0.75rem;
+  background: white;
+  border: 1px solid #cbd5df;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 15%);
+  pointer-events: none;
+}
+
+#plate-preview[hidden] {
+  display: none;
+}
+
+#plate-preview strong {
+  display: block;
+}
+
+#plate-preview img {
+  display: block;
+  width: 100%;
+  max-height: 110px;
+  margin-top: 0.5rem;
+  object-fit: contain;
+}
+
+#map-legend {
+  width: min(100%, 300px);
+  margin: 0 auto;
+}
+
+#map-legend[hidden] {
+  display: none;
+}
+
+.legend-blocks {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  height: 28px;
+  margin-top: 0.4rem;
+}
+
+.legend-title {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+.legend-labels {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.2rem -0.2rem 0;
+}
+
+@media (max-width: 700px) {
+  main:not(.gallery-page) {
+    height: auto;
+    min-height: 100dvh;
+  }
+
+  #map {
+    flex: none;
+    margin: 1rem 0;
+  }
+
+  #map svg {
+    height: auto;
+  }
+}
